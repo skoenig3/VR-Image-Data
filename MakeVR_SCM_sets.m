@@ -2,7 +2,7 @@
 
 
 original_loc = 'C:\Users\seth.koenig\Desktop\Images\';
-setnum = 3;
+setnum = 4;
 folder_loc = 'C:\Users\seth.koenig\Documents\MATLAB\VR Image Data\';
 set_folder = ['VRset' num2str(setnum)];
 img_tag = ['VRS' num2str(setnum) 'I'];
@@ -24,7 +24,7 @@ for l = 1:size(image_list);
         end
     end
 end
-
+%%
 if any(isnan(novel_images_index))
     error('Not enought novel images present')
 end
@@ -44,7 +44,7 @@ for img = 1:36
         error('2nd image not found')
     end
 end
-
+%%
 order = randperm(36);
 novel_images_index = novel_images_index(order);
 image_type2 = image_type2(order);
