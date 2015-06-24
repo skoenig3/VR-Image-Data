@@ -1,7 +1,7 @@
 %make VR image sets
 
 
-original_loc = 'C:\Users\seth.koenig\Desktop\Images\';
+original_loc = 'C:\Users\seth.koenig\Desktop\Images2\';
 setnum = 5;
 folder_loc = 'C:\Users\seth.koenig\Documents\MATLAB\VR Image Data\';
 set_folder = ['VRset' num2str(setnum)];
@@ -68,31 +68,36 @@ moved_count = 1;
 for img = 1:36
     period = strfind(image_list(novel_images_index(img),:),'.bmp');
     name = image_list(novel_images_index(img),1:period-1);
+    if img <  10
+        img_zero = '0';
+    else
+        img_zero = '';
+    end
     if image_type2(img) == 2
         if repeat_order(repeat_count) == 1
-            copyfile([original_loc name '.bmp'],[new_set_folder img_tag num2str(img) '.bmp'])
-            copyfile([original_loc name 'p.bmp'],[new_set_folder img_tag num2str(img) 'p.bmp'])
+            copyfile([original_loc name '.bmp'],[new_set_folder img_tag img_zero num2str(img) '.bmp'])
+            copyfile([original_loc name 'p.bmp'],[new_set_folder img_tag img_zero num2str(img) 'p.bmp'])
         else
-            copyfile([original_loc name 'p.bmp'],[new_set_folder img_tag num2str(img) '.bmp'])
-            copyfile([original_loc name '.bmp'],[new_set_folder img_tag num2str(img) 'p.bmp'])
+            copyfile([original_loc name 'p.bmp'],[new_set_folder img_tag img_zero num2str(img) '.bmp'])
+            copyfile([original_loc name '.bmp'],[new_set_folder img_tag img_zero num2str(img) 'p.bmp'])
         end
         repeat_count = repeat_count + 1; 
     elseif  image_type2(img) == 3
         if replaced_order(replaced_count) == 1
-            copyfile([original_loc name '.bmp'],[new_set_folder img_tag num2str(img) '.bmp'])
-            copyfile([original_loc name 'r.bmp'],[new_set_folder img_tag num2str(img) 'r.bmp'])
+            copyfile([original_loc name '.bmp'],[new_set_folder img_tag img_zero num2str(img) '.bmp'])
+            copyfile([original_loc name 'r.bmp'],[new_set_folder img_tag img_zero num2str(img) 'r.bmp'])
         else
-            copyfile([original_loc name 'r.bmp'],[new_set_folder img_tag num2str(img) '.bmp'])
-            copyfile([original_loc name '.bmp'],[new_set_folder img_tag num2str(img) 'r.bmp'])
+            copyfile([original_loc name 'r.bmp'],[new_set_folder img_tag img_zero num2str(img) '.bmp'])
+            copyfile([original_loc name '.bmp'],[new_set_folder img_tag img_zero num2str(img) 'r.bmp'])
         end
          replaced_count = replaced_count + 1; 
     elseif  image_type2(img) == 4
         if moved_order(moved_count) == 1
-            copyfile([original_loc name '.bmp'],[new_set_folder img_tag num2str(img) '.bmp'])
-            copyfile([original_loc name 'm.bmp'],[new_set_folder img_tag num2str(img) 'm.bmp'])
+            copyfile([original_loc name '.bmp'],[new_set_folder img_tag img_zero num2str(img) '.bmp'])
+            copyfile([original_loc name 'm.bmp'],[new_set_folder img_tag img_zero num2str(img) 'm.bmp'])
         else
-            copyfile([original_loc name 'm.bmp'],[new_set_folder img_tag num2str(img) '.bmp'])
-            copyfile([original_loc name '.bmp'],[new_set_folder img_tag num2str(img) 'm.bmp'])
+            copyfile([original_loc name 'm.bmp'],[new_set_folder img_tag img_zero num2str(img) '.bmp'])
+            copyfile([original_loc name '.bmp'],[new_set_folder img_tag img_zero num2str(img) 'm.bmp'])
         end
          moved_count = moved_count + 1; 
     end
