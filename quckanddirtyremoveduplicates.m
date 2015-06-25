@@ -1,7 +1,7 @@
 %remove images already organized into sets
 VRsets = 1:4;
 
-VRset_dir = 'C:\Users\seth.koenig\Desktop\VRset';
+VRset_dir = 'C:\Users\seth.koenig\Documents\MATLAB\VR Image Data\VRSCM Images\VRset';
 
 values = NaN(72*4,3);
 count = 1;
