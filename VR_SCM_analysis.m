@@ -6,17 +6,17 @@
 % code has been slighlty modified to accommadate different name schemes
 
 %---[2] Import Eye Data---%
-% all_data_dir = 'R:\Buffalo Lab\VR Task Data UW\Giuseppe\panda data\';
-% all_data_files = {'15_06_16_13_50','15_06_16_14_32','15_06_17_13_57','15_06_17_12_55',...
-%     '15_06_18_14_38','15_06_22_14_53','15_06_23_14_09','15_06_24_13_01',...
-%     '15_06_29_13_27','15_06_29_14_12'};
-% monk = 'JN';
+all_data_dir = 'R:\Buffalo Lab\VR Task Data UW\Giuseppe\panda data\';
+all_data_files = {'15_06_16_13_50','15_06_16_14_32','15_06_17_13_57','15_06_17_12_55',...
+    '15_06_18_14_38','15_06_22_14_53','15_06_23_14_09','15_06_24_13_01',...
+    '15_06_29_13_27','15_06_29_14_12'};
+monk = 'JN';
 
 
-all_data_dir = 'R:\Buffalo Lab\VR Task Data UW\Gromit\panda data\';
-all_data_files = {'15_06_19_11_24','15_06_22_10_28','15_06_23_10_48',...
-    '15_06_24_09_21','15_06_29_10_19','15_06_30_10_30'};
-monk = 'GR';
+% all_data_dir = 'R:\Buffalo Lab\VR Task Data UW\Gromit\panda data\';
+% all_data_files = {'15_06_19_11_24','15_06_22_10_28','15_06_23_10_48',...
+%     '15_06_24_09_21','15_06_29_10_19','15_06_30_10_30'};
+% monk = 'GR';
 
 % for file = 1:length(all_data_files)
 %     data_dir = [all_data_dir  monk '_' all_data_files{file}(1:8) '\'];
