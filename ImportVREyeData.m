@@ -83,7 +83,7 @@ end
 fclose(fid);
 
 %---Get Set number for images...for later use---%
-setnum = str2double(image_name{1}(4)); %get the set number, assumes set number is the same for all images,
+setnum = str2double(image_name{1}(4)); %get the set number, assumes set number is the same for all images
 % may be incorrect
 set_dir = [figure_dir 'VRSet' num2str(setnum) '\'];
 mkdir(set_dir);  %make directory if it doesn't already
@@ -157,8 +157,8 @@ input_x = [];
 input_y = [];
 for xi = 1:length(xsquare_poses);
     for yi = 1:length(ysquare_poses);
-        input_x = [input_x; mean(caldat_x{xi,yi})];
-        input_y = [input_y; mean(caldat_y{xi,yi})];
+        input_x = [input_x; nanmean(caldat_x{xi,yi})];
+        input_y = [input_y; nanmean(caldat_y{xi,yi})];
     end
 end
 
@@ -202,6 +202,8 @@ imgnum = NaN(1,36);
 for img = 1:length(image_name);
     imgnum(img) = str2double(image_name{img}(6:7));
 end
+
+imgnum(imgnum == 0) = NaN;%don't know why zero shows up
 
 pairings = NaN(2,36);
 for img = min(imgnum):max(imgnum) %assumes images don't cross over sets
@@ -259,7 +261,7 @@ for eye = 1:length(eyedat)
     x(y > 650) = [];
     y(y > 650) = [];
     
-    eyedat{eye} = [x;y]; 
+    eyedat{eye} = [x;y];
 end
 
 fixationstats = ClusterFixation_Short(eyedat);
