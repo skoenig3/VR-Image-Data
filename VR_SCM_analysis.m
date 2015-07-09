@@ -6,17 +6,17 @@
 % code has been slighlty modified to accommadate different name schemes
 
 %---[2] Import Eye Data---%
-% all_data_dir = 'R:\Buffalo Lab\VR Task Data UW\Giuseppe\panda data\';
-% all_data_files = {'15_06_16_13_50','15_06_16_14_32','15_06_17_13_57','15_06_17_12_55',...
-%     '15_06_18_14_38','15_06_22_14_53','15_06_23_14_09','15_06_24_13_01',...
-%     '15_06_29_13_27','15_06_29_14_12'};
-% monk = 'JN';
+all_data_dir = 'R:\Buffalo Lab\VR Task Data UW\Giuseppe\panda data\';
+all_data_files = {'15_06_16_13_50','15_06_16_14_32','15_06_17_13_57','15_06_17_12_55',...
+    '15_06_18_14_38','15_06_22_14_53','15_06_23_14_09','15_06_24_13_01',...
+    '15_06_29_13_27','15_06_29_14_12'};
+monk = 'JN';
 
 
-all_data_dir = 'R:\Buffalo Lab\VR Task Data UW\Gromit\panda data\';
-all_data_files = {'15_06_19_11_24','15_06_22_10_28','15_06_23_10_48',...
-    '15_06_24_09_21','15_06_29_10_19'};
-monk = 'GR';
+% all_data_dir = 'R:\Buffalo Lab\VR Task Data UW\Gromit\panda data\';
+% all_data_files = {'15_06_19_11_24','15_06_22_10_28','15_06_23_10_48',...
+%     '15_06_24_09_21','15_06_29_10_19'};
+% monk = 'GR';
 
 % for file = length(all_data_files)
 %     data_dir = [all_data_dir  monk '_' all_data_files{file}(1:8) '\'];
@@ -53,11 +53,6 @@ for file = 1:length(all_data_files)
     all_time_points = zeros(5,5000);
     
     for img = 1:size(pairings,2)
-        if setnum == 4 && img == 24
-            continue %2nd presntation of image is wrong image
-        elseif setnum == 4 && img == 16; %some how duplicate of another set
-            continue
-        end
         if ~isnan(pairings(1,img))
             nov_ind = pairings(1,img);%1st presentation (nov)
             rep_ind = pairings(2,img);%2nd presentation  (rep)
@@ -174,7 +169,7 @@ for file = 1:length(all_data_files)
                 if ROI2(4) > imageY; ROI2(4) = imageY;end
             end
             
-                       
+            
             rep_trialType = trialtype;
             
             ROIfix1 = find(...
@@ -193,45 +188,45 @@ for file = 1:length(all_data_files)
             end
             
             %added commented out code below to plot eye traces on images
-                      
-%             if ~isempty(ROIfix2_oldROI)
-%                 disp('found fixations')
-%             end
-%             figure
-%             subplot(2,2,1)
-%             hold on
-%             image(flipud(imread([img_dir 'VRset' num2str(setnum) '\' image_name{nov_ind}])));
-%             plot(novx,novy);
-%             plot([ROI1(1) ROI1(2) ROI1(2) ROI1(1) ROI1(1)],...
-%                 [ROI1(3) ROI1(3) ROI1(4) ROI1(4) ROI1(3)],'g');
-%             plot([ROI2(1) ROI2(2) ROI2(2) ROI2(1) ROI2(1)],...
-%                 [ROI2(3) ROI2(3) ROI2(4) ROI2(4) ROI2(3)],'r');
-%             hold off
-%             box off
-%             xlim([0 imageX])
-%             ylim([0 imageY])
-%             axis off
-%             axis equal
-%             
-%             subplot(2,2,3)
-%             hold on
-%             image(flipud(imread([img_dir 'VRset' num2str(setnum) '\' image_name{rep_ind}])));
-%             plot(repx,repy);
-%             plot([ROI1(1) ROI1(2) ROI1(2) ROI1(1) ROI1(1)],...
-%                 [ROI1(3) ROI1(3) ROI1(4) ROI1(4) ROI1(3)],'g');
-%             plot([ROI2(1) ROI2(2) ROI2(2) ROI2(1) ROI2(1)],...
-%                 [ROI2(3) ROI2(3) ROI2(4) ROI2(4) ROI2(3)],'r');
-%             hold off
-%             box off
-%             xlim([0 imageX])
-%             ylim([0 imageY])
-%             axis off
-%             axis equal
+            
+            %             if ~isempty(ROIfix2_oldROI)
+            %                 disp('found fixations')
+            %             end
+            figure
+            subplot(2,2,1)
+            hold on
+            image(flipud(imread([img_dir 'VRset' num2str(setnum) '\' image_name{nov_ind}])));
+            plot(novx,novy);
+            plot([ROI1(1) ROI1(2) ROI1(2) ROI1(1) ROI1(1)],...
+                [ROI1(3) ROI1(3) ROI1(4) ROI1(4) ROI1(3)],'g');
+            plot([ROI2(1) ROI2(2) ROI2(2) ROI2(1) ROI2(1)],...
+                [ROI2(3) ROI2(3) ROI2(4) ROI2(4) ROI2(3)],'r');
+            hold off
+            box off
+            xlim([0 imageX])
+            ylim([0 imageY])
+            axis off
+            axis equal
+            
+            subplot(2,2,3)
+            hold on
+            image(flipud(imread([img_dir 'VRset' num2str(setnum) '\' image_name{rep_ind}])));
+            plot(repx,repy);
+            plot([ROI1(1) ROI1(2) ROI1(2) ROI1(1) ROI1(1)],...
+                [ROI1(3) ROI1(3) ROI1(4) ROI1(4) ROI1(3)],'g');
+            plot([ROI2(1) ROI2(2) ROI2(2) ROI2(1) ROI2(1)],...
+                [ROI2(3) ROI2(3) ROI2(4) ROI2(4) ROI2(3)],'r');
+            hold off
+            box off
+            xlim([0 imageX])
+            ylim([0 imageY])
+            axis off
+            axis equal
             
             if isempty(ROIfix1)%didnt look at original region, moving on to next image
-%                 subplot(2,2,2)
-%                 title('No fixations in Novel ROI')
-%                 save_and_close_fig(figure_dir2,[monk num2str(img)]);
+                subplot(2,2,2)
+                title('No fixations in Novel ROI')
+                save_and_close_fig(figure_dir2,[monk num2str(img)]);
                 continue
             end
             
@@ -271,12 +266,12 @@ for file = 1:length(all_data_files)
             num10FixationsInROI{file,1} = [num10FixationsInROI{file,1} prop10_fixaitons];
             allTime_ROI_timeWindow{file,1} = [allTime_ROI_timeWindow{file,1} propall_time];
             Time3_ROI_timeWindow{file,1} = [Time3_ROI_timeWindow{file,1} prop3_time];
-%             
-%             s(1) = subplot(2,2,2);
-%             bar([propall_fixations propall_time prop10_fixaitons prop3_time])
-%             set(gca,'XtickLabel',{'Fixations_{all}','Time_{all}','Fixations_{10}','Time_3'});
-%             ylabel('Proportion in ROI')
-%             title(['First Fixation in ROI is # ' num2str(ROIfix1(1))])
+            
+            s(1) = subplot(2,2,2);
+            bar([propall_fixations propall_time prop10_fixaitons prop3_time])
+            set(gca,'XtickLabel',{'Fixations_{all}','Time_{all}','Fixations_{10}','Time_3'});
+            ylabel('Proportion in ROI')
+            title(['First Fixation in ROI is # ' num2str(ROIfix1(1))])
             
             
             %for second presentation
@@ -296,13 +291,13 @@ for file = 1:length(all_data_files)
                 allTime_ROI_timeWindow{file,trialtype} = [allTime_ROI_timeWindow{file,trialtype} propall_time];
                 Time3_ROI_timeWindow{file,trialtype} = [Time3_ROI_timeWindow{file,trialtype} prop3_time];
                 
-%                 s(2) = subplot(2,2,4);
-%                 bar([propall_fixations propall_time prop10_fixaitons prop3_time])
-%                 set(gca,'XtickLabel',{'Fixations_{all}','Time_{all}','Fixations_{10}','Time_3'});
-%                 ylabel('Proportion in ROI')
-%                 if ~isempty(ROIfix2)
-%                     title(['First Fixation in ROI is # ' num2str(ROIfix2(1))])
-%                 end
+                s(2) = subplot(2,2,4);
+                bar([propall_fixations propall_time prop10_fixaitons prop3_time])
+                set(gca,'XtickLabel',{'Fixations_{all}','Time_{all}','Fixations_{10}','Time_3'});
+                ylabel('Proportion in ROI')
+                if ~isempty(ROIfix2)
+                    title(['First Fixation in ROI is # ' num2str(ROIfix2(1))])
+                end
                 
             else %for replaced or repeat
                 area{file,trialtype} = [area{file,trialtype} area_ROI2];
@@ -316,23 +311,22 @@ for file = 1:length(all_data_files)
                 num10FixationsInROI{file,trialtype} = [num10FixationsInROI{file,trialtype} prop10_fixaitons];
                 allTime_ROI_timeWindow{file,trialtype} = [allTime_ROI_timeWindow{file,trialtype} propall_time];
                 Time3_ROI_timeWindow{file,trialtype} = [Time3_ROI_timeWindow{file,trialtype} prop3_time];
-%                 
-%                 s(2) = subplot(2,2,4);
-%                 bar([propall_fixations propall_time prop10_fixaitons prop3_time])
-%                 set(gca,'XtickLabel',{'Fixations_{all}','Time_{all}','Fixations_{10}','Time_3'});
-%                 ylabel('Proportion in ROI')
-%                 if ~isempty(ROIfix2)
-%                     title(['First Fixation in ROI is # ' num2str(ROIfix2(1))])
-%                 end
-%                 
+                
+                s(2) = subplot(2,2,4);
+                bar([propall_fixations propall_time prop10_fixaitons prop3_time])
+                set(gca,'XtickLabel',{'Fixations_{all}','Time_{all}','Fixations_{10}','Time_3'});
+                ylabel('Proportion in ROI')
+                if ~isempty(ROIfix2)
+                    title(['First Fixation in ROI is # ' num2str(ROIfix2(1))])
+                end
             end
-%             yl1 = get(s(1),'ylim');
-%             yl2 = get(s(2),'ylim');
-%             ymax = max([yl1 yl2]);
-%             set(s(1),'ylim',[0 ymax]);
-%             set(s(2),'ylim',[0 ymax]);
-%             
-%             save_and_close_fig(figure_dir2,[monk num2str(img)]);
+            yl1 = get(s(1),'ylim');
+            yl2 = get(s(2),'ylim');
+            ymax = max([yl1 yl2]);
+            set(s(1),'ylim',[0 ymax]);
+            set(s(2),'ylim',[0 ymax]);
+            
+            save_and_close_fig(figure_dir2,[monk num2str(img)]);
             
             
             all_time_points(1,~isnan(tempvec1)) = all_time_points(1,~isnan(tempvec1))+1;
@@ -419,3 +413,73 @@ xlabel('Time (ms)')
 ylabel('% of time in ROI')
 legend('Novel','Repeat','Replaced','Moved (new)','Moved (new+old)');
 title(['Average across all sets, n = ' num2str(max(all_sets))])
+%%
+sess_num_fix =NaN(max(all_sets),4);
+sess_num10fix = NaN(max(all_sets),4);
+sess_allTime = NaN(max(all_sets),4);
+sess_Time3 = NaN(max(all_sets),4);
+for a = min(all_sets):max(all_sets);
+    this_set = find(all_sets == a);
+    set_avg_nf = [];
+    set_avg_nf10 = [];
+    set_avg_at = [];
+    set_avg_at3 = [];
+    for t=1:length(this_set)
+        for tp = 1:4
+            set_avg_nf(t,tp) = mean(allnumFixationsInROI{this_set(t),tp});
+            set_avg_nf10(t,tp) = mean(num10FixationsInROI{this_set(t),tp});
+            set_avg_at(t,tp) = mean(num10FixationsInROI{this_set(t),tp});
+            set_avg_at3(t,tp) = mean(num10FixationsInROI{this_set(t),tp});
+        end
+    end
+    
+    for tp = 1:4
+        sess_num_fix(a,tp) = 100*mean(set_avg_nf(:,tp));
+        sess_num10fix(a,tp) = 100*mean(set_avg_nf10(:,tp));
+        sess_allTime(a,tp)= 100*mean(set_avg_at(:,tp));
+        sess_Time3(a,tp)= 100*mean(set_avg_at3(:,tp));
+    end
+end
+
+figure
+subplot(2,2,1)
+hold on
+bar(nanmean(sess_num10fix));
+errorb(nanmean(sess_num10fix),nanstd(sess_num10fix)./sqrt(sum(~isnan(sess_num10fix(:,1)))))
+hold off
+set(gca,'Xtick',1:4)
+set(gca,'XtickLabel',{'Novel','Repeat','Replaced','Moved'})
+ylabel('Percentage')
+title('% of 1st 10 Fixations in ROI')
+
+subplot(2,2,2)
+hold on
+bar(nanmean(sess_Time3));
+errorb(nanmean(sess_Time3),nanstd(sess_Time3)./sqrt(sum(~isnan(sess_Time3(:,1)))))
+hold off
+set(gca,'Xtick',1:4)
+set(gca,'XtickLabel',{'Novel','Repeat','Replaced','Moved'})
+ylabel('Percentage')
+title('% of Time in 1st 3 seconds in ROI')
+
+subplot(2,2,3)
+hold on
+bar(nanmean(sess_num_fix));
+errorb(nanmean(sess_num_fix),nanstd(sess_num_fix)./sqrt(sum(~isnan(sess_num_fix(:,1)))))
+hold off
+set(gca,'Xtick',1:4)
+set(gca,'XtickLabel',{'Novel','Repeat','Replaced','Moved'})
+ylabel('Percentage')
+title('% of All Fixations in ROI')
+
+subplot(2,2,4)
+hold on
+bar(nanmean(sess_allTime));
+errorb(nanmean(sess_allTime),nanstd(sess_allTime)./sqrt(sum(~isnan(sess_allTime(:,1)))))
+hold off
+set(gca,'Xtick',1:4)
+set(gca,'XtickLabel',{'Novel','Repeat','Replaced','Moved'})
+ylabel('Percentage')
+title('% of All Time in ROI')
+
+subtitle(monk)
