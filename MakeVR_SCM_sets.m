@@ -2,7 +2,7 @@
 
 
 original_loc = 'C:\Users\seth.koenig\Desktop\Images2\';
-setnum = 7;
+setnum = 8;
 folder_loc = 'C:\Users\seth.koenig\Documents\MATLAB\VR Image Data\';
 set_folder = ['VRset' num2str(setnum)];
 img_tag = ['VRS' num2str(setnum) 'I'];
