@@ -40,6 +40,7 @@ while ischar(tline)
     tline = fgets(fid); %get next line
     if tline ~= -1; %end of file is noted by -1
         C = textscan(tline,'%s'); %parse line by spaces and comas
+        C
         time(linecount) = str2double(C{1}{1});
         if strcmpi(C{1}{2},'Square')
             if strcmpi(C{1}{3},'Position,') %gives position of square in pixels
