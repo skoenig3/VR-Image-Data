@@ -499,6 +499,16 @@ title('% of All Time in ROI')
 subtitle(monk)
 
 %%
+figure
+hold on
+bar(nanmean(sess_Time15));
+errorb(nanmean(sess_Time15),nanstd(sess_Time15)./sqrt(sum(~isnan(sess_Time15(:,1)))))
+hold off
+set(gca,'Xtick',1:4)
+set(gca,'XtickLabel',{'Novel','Repeat','Replaced','Moved'})
+ylabel('Percentage')
+title('% of Time in 0.5-1.5 sec window in ROI')
+%%
 [~,novel_p_allfix] = ttest2(sess_allTime(:,2),sess_allTime(:,1))
 [~,replaced_p_allfix] = ttest2(sess_allTime(:,2),sess_allTime(:,3))
 [~,moved_p_allfix] = ttest2(sess_allTime(:,2),sess_allTime(:,4))
