@@ -6,23 +6,26 @@
 % code has been slighlty modified to accommadate different name schemes
 
 %---[2] Import Eye Data---%
-all_data_dir = 'R:\Buffalo Lab\VR Task Data UW\Giuseppe\panda data\';
-all_data_files = {'15_06_16_13_50','15_06_16_14_32','15_06_17_13_57','15_06_17_12_55',...
-    '15_06_18_14_38','15_06_22_14_53','15_06_23_14_09','15_06_24_13_01',...
-    '15_06_29_13_27','15_06_29_14_12','15_07_16_14_10',...
-    '15_07_17_12_31','15_07_23_12_28','15_07_23_12_58'};
-monk = 'JN';
+% all_data_dir = 'R:\Buffalo Lab\VR Task Data UW\Giuseppe\panda data\';
+% all_data_files = {'15_06_16_13_50','15_06_16_14_32','15_06_17_13_57','15_06_17_12_55',...
+%     '15_06_18_14_38','15_06_22_14_53','15_06_23_14_09','15_06_24_13_01',...
+%     '15_06_29_13_27','15_06_29_14_12','15_07_16_14_10',...
+%     '15_07_17_12_31','15_07_23_12_28','15_07_23_12_58'};
+% monk = 'JN';
 
 
-% all_data_dir = 'R:\Buffalo Lab\VR Task Data UW\Gromit\panda data\';
-% all_data_files = {'15_06_19_11_24','15_06_22_10_28','15_06_23_10_48',...
-%     '15_06_24_09_21','15_06_29_10_19'};
-% monk = 'GR';
+all_data_dir = 'R:\Buffalo Lab\VR Task Data UW\Gromit\panda data\';
+all_data_files = {'15_06_19_11_24','15_06_22_10_28','15_06_23_10_48',...
+    '15_06_24_09_21','15_06_29_10_19','15_06_30_10_30',...
+    '15_07_20_10_15','15_07_21_10_03','15_07_22_09_23',...
+    '15_07_23_10_01','15_07_24_10_05','15_07_27_09_57','15_07_28_10_16',...
+    };
+monk = 'GR';
 
-% for file = 13:length(all_data_files)
-%     data_dir = [all_data_dir  monk '_' all_data_files{file}(1:8) '\'];
-%     ImportVREyeData(all_data_files{file},data_dir)
-% end
+for file = 7:length(all_data_files)
+    data_dir = [all_data_dir  monk '_' all_data_files{file}(1:8) '\'];
+    ImportVREyeData(all_data_files{file},data_dir)
+end
 %%
 
 imageX = 800;
