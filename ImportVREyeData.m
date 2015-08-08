@@ -1,4 +1,4 @@
-function ImportVREyeData(data_file,data_dir)
+function ImportVREyeData(data_file,data_dir,monk)
 %written by Seth Konig 6/23/15. Practically exact duplicate of
 %Import_VR_Image_Data.m
 
@@ -266,6 +266,6 @@ for eye = 1:length(eyedat)
 end
 
 fixationstats = ClusterFixation_Short(eyedat);
-save([eyedata_dir data_file '-fixation.mat'],'fixationstats',...
+save([eyedata_dir monk  data_file '-fixation.mat'],'fixationstats',...
     'image_name','pairings','imgnum','setnum')
 end

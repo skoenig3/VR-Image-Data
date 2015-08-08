@@ -1,51 +1,51 @@
-% Code written By Seth Konig to determine if certain maniuplations are
-% harder than others to spot. Written July 2015
-
-%%
-%---[1] Make Salience maps for manipulated imagse---%
-% image_dir = 'C:\Users\seth.koenig\Documents\MATLAB\VR Image Data\VRSCM Images\';
-%
-% for SET =1:8
-%     cd([image_dir 'VRset' num2str(SET) '\']);
-%     list = ls;
-%     for img = 1:size(list,1)
-%         if ~isempty(strfind(list(img,:),'.bmp'))
-%             getSalienceMap(list(img,:))
-%         end
-%     end
-% end
-% emailme('Finished creating saliencemaps')
-%%
-% %---[2] Run simulations for manipulated images---%
-% image_dir = 'C:\Users\seth.koenig\Documents\MATLAB\VR Image Data\VRSCM Images\';
-% tags = {'MP','TT','JN','IW'};
-% Combinedbehaviorfile = ['C:\Users\seth.koenig\Documents\MATLAB\BCRW Salience Model\SCM Image Sets'...
-%     '\CombinedViewingBehavior.mat'];
-% use behavioral files from the 4 monkeys we have lots of behavior from not
-% the 1 or 2 we have little from
-%
-% load(Combinedbehaviorfile,'allview')
-% imageX = 800; imageY = 600;
-% plotoptions.runs = 'none'; %all/none
-% plotoptions.probdens = 'none';
-% plotoptions.type = 'sal'; %sal/image
-% IOR_tau = [1/17];
-% % %same name for everyset
+% % Code written By Seth Konig to determine if certain maniuplations are
+% % harder than others to spot. Written July 2015
+% 
+% %%
+% %---[1] Make Salience maps for manipulated imagse---%
+% % image_dir = 'C:\Users\seth.koenig\Documents\MATLAB\VR Image Data\VRSCM Images\';
 % %
-% for SET = 1:8
-%    emailme(['Running Simulations for Set ' num2str(SET)])
-%     cd([image_dir 'VRset' num2str(SET) '\']);
-%     a = what;
-%     saliencemapfiles = a.mat;
-%
-%     for i = 1:size(saliencemapfiles,1)
-%         for t = 1:length(tags)
-%             disp(['Running ' tags{t} ' on image #' num2str(i) ' from ' num2str(SET)])
-%             run_BCRWCF(allview{t},saliencemapfiles{i},tags{t},imageX,imageY,plotoptions,IOR_tau)
-%         end
-%     end
-% end
-%%
+% % for SET =1:8
+% %     cd([image_dir 'VRset' num2str(SET) '\']);
+% %     list = ls;
+% %     for img = 1:size(list,1)
+% %         if ~isempty(strfind(list(img,:),'.bmp'))
+% %             getSalienceMap(list(img,:))
+% %         end
+% %     end
+% % end
+% % emailme('Finished creating saliencemaps')
+% %%
+% % %---[2] Run simulations for manipulated images---%
+% % image_dir = 'C:\Users\seth.koenig\Documents\MATLAB\VR Image Data\VRSCM Images\';
+% % tags = {'MP','TT','JN','IW'};
+% % Combinedbehaviorfile = ['C:\Users\seth.koenig\Documents\MATLAB\BCRW Salience Model\SCM Image Sets'...
+% %     '\CombinedViewingBehavior.mat'];
+% % use behavioral files from the 4 monkeys we have lots of behavior from not
+% % the 1 or 2 we have little from
+% %
+% % load(Combinedbehaviorfile,'allview')
+% % imageX = 800; imageY = 600;
+% % plotoptions.runs = 'none'; %all/none
+% % plotoptions.probdens = 'none';
+% % plotoptions.type = 'sal'; %sal/image
+% % IOR_tau = [1/17];
+% % % %same name for everyset
+% % %
+% % for SET = 1:8
+% %    emailme(['Running Simulations for Set ' num2str(SET)])
+% %     cd([image_dir 'VRset' num2str(SET) '\']);
+% %     a = what;
+% %     saliencemapfiles = a.mat;
+% %
+% %     for i = 1:size(saliencemapfiles,1)
+% %         for t = 1:length(tags)
+% %             disp(['Running ' tags{t} ' on image #' num2str(i) ' from ' num2str(SET)])
+% %             run_BCRWCF(allview{t},saliencemapfiles{i},tags{t},imageX,imageY,plotoptions,IOR_tau)
+% %         end
+% %     end
+% % end
+% %%
 %---[3] Determine the number of fixations to Manipulated ROI---%
 
 image_dir = 'C:\Users\seth.koenig\Documents\MATLAB\VR Image Data\VRSCM Images\';
@@ -185,12 +185,18 @@ nanmean(nanmean(moved_area))
 [~,tpa] = ttest2(replaced_area(1:end),moved_area(1:end))
 [~,kpa] = kstest2(replaced_area(1:end),moved_area(1:end))
 %%
-all_data_dir = 'R:\Buffalo Lab\VR Task Data UW\Giuseppe\panda data\';
-all_data_files = {'15_06_16_13_50','15_06_16_14_32','15_06_17_13_57','15_06_17_12_55',...
-    '15_06_18_14_38','15_06_22_14_53','15_06_23_14_09','15_06_24_13_01',...
-    '15_06_29_13_27','15_06_29_14_12','15_07_16_14_10',...
-    '15_07_17_12_31','15_07_23_12_28','15_07_23_12_58'};
-monk = 'JN';
+% all_data_dir = 'R:\Buffalo Lab\VR Task Data UW\Giuseppe\panda data\';
+% all_data_files = {'15_06_16_13_50','15_06_16_14_32','15_06_17_13_57','15_06_17_12_55',...
+%     '15_06_18_14_38','15_06_22_14_53','15_06_23_14_09','15_06_24_13_01',...
+%     '15_06_29_13_27','15_06_29_14_12','15_07_16_14_10',...
+%     '15_07_17_12_31','15_07_23_12_28','15_07_23_12_58'};
+% monk = 'JN';
+
+all_data_files = {'15_06_19_11_24','15_06_22_10_28','15_06_23_10_48',...
+    '15_06_24_09_21','15_06_29_10_19','15_06_30_10_30',...
+    '15_07_23_10_01','15_07_24_10_05','15_07_27_09_57','15_07_28_10_16',...
+    '15_07_29_09_09','15_07_30_11_14','15_08_03_10_33','15_08_04_10_05'};
+monk = 'GR';
 
 imageX = 800;
 imageY = 600;
@@ -212,7 +218,7 @@ Time3_ROI_timeWindow =  cell(length(all_data_files),4);%amount of time in ROI by
 Time15_ROI_timeWindow =  cell(length(all_data_files),4);%amount of time in ROI by session by type in 0.5-1.5 secs window
 
 for file = 1:length(all_data_files)
-    load([data_dir all_data_files{file} '-fixation.mat']);
+    load([data_dir monk all_data_files{file} '-fixation.mat']);
     load([img_dir 'VRset' num2str(setnum) '_ROIs.mat']);
     figure_dir2 = [figure_dir 'VRSet' num2str(setnum) '\'];
     
@@ -239,8 +245,13 @@ for file = 1:length(all_data_files)
             imgnum = str2double(rep_name(6:7));
             
             nov_time_out = zeros(1,5000); %time outside image or crosshair fixation
-            novx = fixationstats{nov_ind}.XY(1,1:5000);
-            novy = fixationstats{nov_ind}.XY(2,1:5000);
+            try
+                novx = fixationstats{nov_ind}.XY(1,1:5000);
+                novy = fixationstats{nov_ind}.XY(2,1:5000);
+            catch
+                disp('skipping')
+                continue
+            end
             novfixations = fixationstats{nov_ind}.fixations;
             novtimes =  fixationstats{nov_ind}.fixationtimes;
             novtimes= ceil(novtimes/5);

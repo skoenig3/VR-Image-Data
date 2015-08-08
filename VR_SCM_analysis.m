@@ -17,15 +17,19 @@
 all_data_dir = 'R:\Buffalo Lab\VR Task Data UW\Gromit\panda data\';
 all_data_files = {'15_06_19_11_24','15_06_22_10_28','15_06_23_10_48',...
     '15_06_24_09_21','15_06_29_10_19','15_06_30_10_30',...
-    '15_07_20_10_15','15_07_21_10_03','15_07_22_09_23',...
     '15_07_23_10_01','15_07_24_10_05','15_07_27_09_57','15_07_28_10_16',...
-    };
+    '15_07_29_09_09','15_07_30_11_14','15_08_03_10_33','15_08_04_10_05'};
 monk = 'GR';
 
-for file = 7:length(all_data_files)
-    data_dir = [all_data_dir  monk '_' all_data_files{file}(1:8) '\'];
-    ImportVREyeData(all_data_files{file},data_dir)
-end
+% for file = 11:length(all_data_files)
+%     if file >= 11
+%         data_dir = ['R:\Buffalo Lab\VR Task Data UW\Gromit\panda data\calibrate\'];
+%     else
+%         data_dir = [all_data_dir  monk '_' all_data_files{file}(1:8) '\'];
+%     end
+%     
+%     ImportVREyeData(all_data_files{file},data_dir,monk)
+% end
 %%
 
 imageX = 800;
@@ -49,7 +53,7 @@ Time15_ROI_timeWindow =  cell(length(all_data_files),4);%amount of time in ROI b
 area = cell(length(all_data_files),4);
 
 for file = 1:length(all_data_files)
-    load([data_dir all_data_files{file} '-fixation.mat']);
+    load([data_dir monk all_data_files{file} '-fixation.mat']);
     load([img_dir 'VRset' num2str(setnum) '_ROIs.mat']);
     figure_dir2 = [figure_dir 'VRSet' num2str(setnum) '\'];
     
@@ -75,8 +79,12 @@ for file = 1:length(all_data_files)
             end
             
             nov_time_out = zeros(1,5000); %time outside image or crosshair fixation
-            novx = fixationstats{nov_ind}.XY(1,1:5000);
-            novy = fixationstats{nov_ind}.XY(2,1:5000);
+            try
+                novx = fixationstats{nov_ind}.XY(1,1:5000);
+                novy = fixationstats{nov_ind}.XY(2,1:5000);
+            catch
+                continue
+            end
             novfixations = fixationstats{nov_ind}.fixations;
             novtimes =  fixationstats{nov_ind}.fixationtimes;
             novtimes= ceil(novtimes/5);
