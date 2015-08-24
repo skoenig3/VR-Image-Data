@@ -6,6 +6,7 @@
 % code has been slighlty modified to accommadate different name schemes
 
 %---[2] Import Eye Data---%
+%---VR pilot sets---%
 % all_data_dir = 'R:\Buffalo Lab\VR Task Data UW\Giuseppe\panda data\';
 % all_data_files = {'15_06_16_13_50','15_06_16_14_32','15_06_17_13_57','15_06_17_12_55',...
 %     '15_06_18_14_38','15_06_22_14_53','15_06_23_14_09','15_06_24_13_01',...
@@ -13,29 +14,36 @@
 %     '15_07_17_12_31','15_07_23_12_28','15_07_23_12_58'};
 % monk = 'JN';
 
+% all_data_dir = 'R:\Buffalo Lab\VR Task Data UW\Gromit\panda data\';
+% all_data_files = {'15_06_19_11_24','15_06_22_10_28','15_06_23_10_48',...
+%     '15_06_24_09_21','15_06_29_10_19','15_06_30_10_30',...
+%     '15_07_23_10_01','15_07_24_10_05','15_07_27_09_57','15_07_28_10_16',...
+%     '15_07_29_09_09','15_07_30_11_14','15_08_03_10_33','15_08_04_10_05'};
+% monk = 'GR';
 
-all_data_dir = 'R:\Buffalo Lab\VR Task Data UW\Gromit\panda data\';
-all_data_files = {'15_06_19_11_24','15_06_22_10_28','15_06_23_10_48',...
-    '15_06_24_09_21','15_06_29_10_19','15_06_30_10_30',...
-    '15_07_23_10_01','15_07_24_10_05','15_07_27_09_57','15_07_28_10_16',...
-    '15_07_29_09_09','15_07_30_11_14','15_08_03_10_33','15_08_04_10_05'};
-monk = 'GR';
+%---Final version pilot---%
+all_data_dir = 'R:\Buffalo Lab\VR Task Data UW\Giuseppe\panda data\';
+all_data_files = {'15_08_17_14_21','15_08_17_14_43','15_08_18_14_03',...
+    '15_08_20_13_55','15_08_21_14_00','15_8_24_12_43'};
+monk = 'JN';
 
-% for file = 11:length(all_data_files)
+
+for file = 1:length(all_data_files)
 %     if file >= 11
 %         data_dir = ['R:\Buffalo Lab\VR Task Data UW\Gromit\panda data\calibrate\'];
 %     else
-%         data_dir = [all_data_dir  monk '_' all_data_files{file}(1:8) '\'];
+        data_dir = [all_data_dir  monk '_' all_data_files{file}(1:8) '\'];
 %     end
-%     
-%     ImportVREyeData(all_data_files{file},data_dir,monk)
-% end
+    
+    ImportVREyeData(all_data_files{file},data_dir,monk)
+end
 %%
 
 imageX = 800;
 imageY = 600;
 
-img_dir = 'C:\Users\seth.koenig\Documents\MATLAB\VR Image Data\VRSCM Images\';
+% img_dir = 'C:\Users\seth.koenig\Documents\MATLAB\VR Image Data\VRSCM Images\';
+img_dir = 'C:\Users\seth.koenig\Documents\MATLAB\SCM_RelationalMemory\'; 
 figure_dir = 'C:\Users\seth.koenig\Documents\MATLAB\VR Image Data\Figures\';
 data_dir = 'C:\Users\seth.koenig\Documents\MATLAB\VR Image Data\Eye Data\';
 
@@ -54,8 +62,11 @@ area = cell(length(all_data_files),4);
 
 for file = 1:length(all_data_files)
     load([data_dir monk all_data_files{file} '-fixation.mat']);
-    load([img_dir 'VRset' num2str(setnum) '_ROIs.mat']);
-    figure_dir2 = [figure_dir 'VRSet' num2str(setnum) '\'];
+%     load([img_dir 'VRset' num2str(setnum) '_ROIs.mat']);
+%     figure_dir2 = [figure_dir 'VRSet' num2str(setnum) '\'];
+
+    load([img_dir 'SCMRM0' num2str(setnum) '_ROIs.mat']);
+    figure_dir2 = [figure_dir 'SCMRM' num2str(setnum) '\'];
     
     all_sets(file) = setnum;
     
