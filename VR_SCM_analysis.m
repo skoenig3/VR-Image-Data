@@ -24,19 +24,26 @@
 %---Final version pilot---%
 all_data_dir = 'R:\Buffalo Lab\VR Task Data UW\Giuseppe\panda data\';
 all_data_files = {'15_08_17_14_21','15_08_17_14_43','15_08_18_14_03',...
-    '15_08_20_13_55','15_08_21_14_00','15_8_24_12_43'};
+    '15_08_20_13_55','15_08_21_14_00','15_08_24_12_43','15_08_24_13_54'};
 monk = 'JN';
 
+% all_data_dir = 'R:\Buffalo Lab\VR Task Data UW\Gromit\panda data\';
+% all_data_files = {'15_08_17_10_48','15_08_17_11_31','15_08_19_12_12',...
+%     '15_08_20_11_13','15_08_24_10_25'};
+% monk = 'GR';
 
-for file = 1:length(all_data_files)
-%     if file >= 11
-%         data_dir = ['R:\Buffalo Lab\VR Task Data UW\Gromit\panda data\calibrate\'];
-%     else
-        data_dir = [all_data_dir  monk '_' all_data_files{file}(1:8) '\'];
-%     end
-    
-    ImportVREyeData(all_data_files{file},data_dir,monk)
-end
+
+
+% for file = 5:length(all_data_files)
+%     %un comment for VR pilot sets
+% %     if file >= 11
+% %         data_dir = ['R:\Buffalo Lab\VR Task Data UW\Gromit\panda data\calibrate\'];
+% %     else
+%         data_dir = [all_data_dir  monk '_' all_data_files{file}(1:8) '\'];
+% %     end
+%     
+%     ImportVREyeData(all_data_files{file},data_dir,monk)
+% end
 %%
 
 imageX = 800;
@@ -62,9 +69,11 @@ area = cell(length(all_data_files),4);
 
 for file = 1:length(all_data_files)
     load([data_dir monk all_data_files{file} '-fixation.mat']);
-%     load([img_dir 'VRset' num2str(setnum) '_ROIs.mat']);
-%     figure_dir2 = [figure_dir 'VRSet' num2str(setnum) '\'];
-
+    %uncomment for VR pilot sets
+    %     load([img_dir 'VRset' num2str(setnum) '_ROIs.mat']);
+    %     figure_dir2 = [figure_dir 'VRSet' num2str(setnum) '\'];
+    
+    %comment for VR pilot sets
     load([img_dir 'SCMRM0' num2str(setnum) '_ROIs.mat']);
     figure_dir2 = [figure_dir 'SCMRM' num2str(setnum) '\'];
     
@@ -79,11 +88,17 @@ for file = 1:length(all_data_files)
             rep_ind = pairings(2,img);%2nd presentation  (rep)
             
             rep_name = image_name{rep_ind};
-            if strcmpi(rep_name(8),'p')
+            
+            if strcmpi(image_name{1}(1),'S')
+                rep_index = 7;
+            else %for VRset pilot
+                rep_index = 8;
+            end
+            if strcmpi(rep_name(rep_index),'p')
                 trialtype = 2;
-            elseif strcmpi(rep_name(8),'r')
+            elseif strcmpi(rep_name(rep_index),'r')
                 trialtype = 3;
-            elseif strcmpi(rep_name(8),'m')
+            elseif strcmpi(rep_name(rep_index),'m')
                 trialtype = 4;
             else
                 error('image type unkown')

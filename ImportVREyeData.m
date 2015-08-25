@@ -40,7 +40,6 @@ while ischar(tline)
     tline = fgets(fid); %get next line
     if tline ~= -1; %end of file is noted by -1
         C = textscan(tline,'%s'); %parse line by spaces and comas
-        C
         time(linecount) = str2double(C{1}{1});
         if strcmpi(C{1}{2},'Square')
             if strcmpi(C{1}{3},'Position,') %gives position of square in pixels
@@ -84,13 +83,23 @@ end
 fclose(fid);
 
 %---Get Set number for images...for later use---%
-setnum = str2double(image_name{1}(4)); %get the set number, assumes set number is the same for all images
+if strcmpi(image_name{1}(1),'S')
+    setnum = str2double(image_name{1}(2:3)); %get the set number, assumes set number is the same for all images
+    if setnum < 10
+        img_dir = ['C:\Users\seth.koenig\Documents\MATLAB\SCM_RelationalMemory\Image Sets\SCMRM0' num2str(setnum) '\'];
+    else
+        img_dir = ['C:\Users\seth.koenig\Documents\MATLAB\SCM_RelationalMemory\Image Sets\SCMRM' num2str(setnum) '\'];
+        
+    end
+else %VR pilot sets
+    setnum = str2double(image_name{1}(4)); %get the set number, assumes set number is the same for all images
+    img_dir = ['C:\Users\seth.koenig\Documents\MATLAB\VR Image Data\VRSCM Images\VRset' num2str(setnum) '\'];
+end
+
 % may be incorrect
 set_dir = [figure_dir 'VRSet' num2str(setnum) '\'];
 mkdir(set_dir);  %make directory if it doesn't already
 %exist for individual sets for organization purpose
-
-img_dir = ['C:\Users\seth.koenig\Documents\MATLAB\VR Image Data\VRSCM Images\VRset' num2str(setnum) '\'];
 
 %---Get the calibration Function---%
 %doing for individual sessions of calibration. Currently assumes stable
@@ -200,8 +209,14 @@ end
 
 %---Get image numbers and the order they appeared in---%
 imgnum = NaN(1,36);
-for img = 1:length(image_name);
-    imgnum(img) = str2double(image_name{img}(6:7));
+if strcmpi(image_name{1}(1),'S')
+    for img = 1:length(image_name);
+        imgnum(img) = str2double(image_name{img}(5:6));
+    end
+else %VR pilot sets
+    for img = 1:length(image_name);
+        imgnum(img) = str2double(image_name{img}(6:7));
+    end
 end
 
 imgnum(imgnum == 0) = NaN;%don't know why zero shows up
