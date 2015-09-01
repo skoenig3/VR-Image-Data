@@ -86,9 +86,9 @@ fclose(fid);
 if strcmpi(image_name{1}(1),'S')
     setnum = str2double(image_name{1}(2:3)); %get the set number, assumes set number is the same for all images
     if setnum < 10
-        img_dir = ['C:\Users\seth.koenig\Documents\MATLAB\SCM_RelationalMemory\Image Sets\SCMRM0' num2str(setnum) '\'];
+        img_dir = ['C:\Users\seth.koenig\Documents\MATLAB\SCM_RelationalMemory\Image Sets\SCM0' num2str(setnum) '\'];
     else
-        img_dir = ['C:\Users\seth.koenig\Documents\MATLAB\SCM_RelationalMemory\Image Sets\SCMRM' num2str(setnum) '\'];
+        img_dir = ['C:\Users\seth.koenig\Documents\MATLAB\SCM_RelationalMemory\Image Sets\SCM' num2str(setnum) '\'];
         
     end
 else %VR pilot sets

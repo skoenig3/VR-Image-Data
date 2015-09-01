@@ -22,19 +22,19 @@
 % monk = 'GR';
 
 %---Final version pilot---%
-all_data_dir = 'R:\Buffalo Lab\VR Task Data UW\Giuseppe\panda data\';
-all_data_files = {'15_08_17_14_21','15_08_17_14_43','15_08_18_14_03',...
-    '15_08_20_13_55','15_08_21_14_00','15_08_24_12_43','15_08_24_13_54'};
-monk = 'JN';
+% all_data_dir = 'R:\Buffalo Lab\VR Task Data UW\Giuseppe\panda data\';
+% all_data_files = {'15_08_17_14_21','15_08_17_14_43','15_08_18_14_03',...
+%     '15_08_20_13_55','15_08_21_14_00','15_08_24_12_43','15_08_24_13_54',...
+%     '15_08_26_13_03','15_08_26_14_06','15_08_27_12_57','15_08_27_13_58'};
+% monk = 'JN';
 
-% all_data_dir = 'R:\Buffalo Lab\VR Task Data UW\Gromit\panda data\';
-% all_data_files = {'15_08_17_10_48','15_08_17_11_31','15_08_19_12_12',...
-%     '15_08_20_11_13','15_08_24_10_25'};
-% monk = 'GR';
+all_data_dir = 'R:\Buffalo Lab\VR Task Data UW\Gromit\panda data\';
+all_data_files = {'15_08_17_10_48','15_08_17_11_31','15_08_19_12_12',...
+    '15_08_20_11_13','15_08_24_10_25','15_08_26_09_19','15_08_26_09_39',...
+     '15_08_27_10_06','15_08_27_10_29'};
+monk = 'GR';
 
-
-
-% for file = 5:length(all_data_files)
+% for file = 6:length(all_data_files)
 %     %un comment for VR pilot sets
 % %     if file >= 11
 % %         data_dir = ['R:\Buffalo Lab\VR Task Data UW\Gromit\panda data\calibrate\'];
