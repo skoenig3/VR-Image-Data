@@ -1,6 +1,7 @@
 function ImportVREyeData(data_file,data_dir,monk)
 %written by Seth Konig 6/23/15. Practically exact duplicate of
 %Import_VR_Image_Data.m
+%monk is used to save data dir otherwise variable is meaningless
 
 eyedata_dir = 'C:\Users\seth.koenig\Documents\MATLAB\VR Image Data\Eye Data\';
 %where to save the processed eye data
